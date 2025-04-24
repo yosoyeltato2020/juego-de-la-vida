@@ -1,31 +1,37 @@
 celulas = [
-    [0, 0, 0, 9, 1, 9, 0, 0, 0],
-    [0, 0, 0, 0, 999, 0, 0, 0, 0],
+    [0, 0, 0, 0, 1, 1, 0, 0, 0],
+    [2, 0, 0, 1, 1, 1, 0, 0, 1],
+    [3, 0, 0, 6, 7, 8, 0, 0, 1],
 ]
-vecinos_vivos = 0
-for lista in range(len(celulas)):
-    for item in range(len(celulas[lista])):
+
+for lista in range(len(celulas)-1):
+    # print(celulas[lista])
+    for item in range(len(celulas[lista])-1):
+        vecinos_vivos = 0
         if celulas[lista][item] == 1:
+            print(celulas[lista])
             index_item = celulas[lista].index(celulas[lista][item])
-            print(f"INDEX DEL ITEM ACTUAL: {index_item}")
             # Check the last and next item
             siguiente_item = celulas[lista][item+1]
             anterior_item = celulas[lista][item-1]
-            print(f"siguiente_item: {siguiente_item}")
-            print(f"anterior_item: {anterior_item}")
 
-            elemento_arriba = None
-            elemento_abajo = None
-            # if lista != 0:
-                # Si hay algo arriba, entonces
-            lista_abajo = celulas[lista-1]
-            print(f"Lista abajo: {lista_abajo}")
+            lista_abajo = celulas[lista+1]
             elemento_abajo = lista_abajo[index_item]
-            print(f"Elemento abajo {elemento_abajo}")
+            elemento_abajo_derecha = lista_abajo[index_item+1]
+            elemento_abajo_izquierda = lista_abajo[index_item-1]
 
             if siguiente_item == 1:
                 vecinos_vivos += 1
             if anterior_item == 1:
                 vecinos_vivos += 1
+            if elemento_abajo == 1:
+                vecinos_vivos += 1
+            if elemento_abajo_izquierda == 1:
+                vecinos_vivos += 1
+            if elemento_abajo_derecha == 1:
+                vecinos_vivos += 1
 
-            # print(f"Celulas vivas de {lista[item]} => {vecinos_vivos}")
+            print(f"VECINOS VIVOS => {vecinos_vivos}")
+            print()
+            print()
+            print()
